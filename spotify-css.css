@@ -33,7 +33,6 @@ body {
     background-color: var(--spotify-dark-grey);
     border-radius: 8px;
     overflow: hidden;
-    /* Tambahan untuk responsivitas */
     flex-direction: row; /* Default untuk desktop */
 }
 
@@ -44,8 +43,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    /* Tambahan untuk responsivitas */
-    flex-shrink: 0; /* Mencegah sidebar menyusut terlalu kecil */
+    flex-shrink: 0;
 }
 
 .sidebar .logo {
@@ -138,11 +136,10 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    /* Tambahan untuk responsivitas */
-    position: sticky; /* Agar header tetap di atas saat scroll */
+    position: sticky;
     top: 0;
     z-index: 100;
-    background: linear-gradient(to bottom, #4a2b64, transparent); /* Agar mulus saat scroll */
+    position: relative;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -202,14 +199,12 @@ body {
     align-items: flex-end;
     margin-bottom: 40px;
     padding-top: 20px;
-    /* Tambahan untuk responsivitas */
-    flex-direction: row; /* Default untuk desktop */
-    align-items: flex-end; /* Default untuk desktop */
+    flex-direction: row;
+    align-items: flex-end;
 }
 
 .playlist-details .playlist-cover {
     margin-right: 30px;
-    /* Tambahan untuk responsivitas */
     flex-shrink: 0;
 }
 
@@ -344,6 +339,19 @@ body {
     padding-left: 10px;
 }
 
+.song-list .song-item .song-column.title {
+    display: flex;
+    align-items: center;
+}
+
+.song-list .song-item .song-column .song-mini-cover {
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
 .song-list .song-item .song-column:nth-child(1) {
     color: var(--text-color);
 }
@@ -384,16 +392,16 @@ body {
 /* Media Queries untuk Responsivitas */
 @media (max-width: 768px) { /* Untuk tablet dan smartphone */
     body {
-        min-height: unset; /* Izinkan body mengambil tinggi alami */
-        padding: 0; /* Hapus padding body */
-        align-items: flex-start; /* Mulai dari atas */
+        min-height: unset;
+        padding: 0;
+        align-items: flex-start;
     }
 
     .container {
         width: 100%;
-        height: 100vh; /* Ambil tinggi penuh layar */
-        border-radius: 0; /* Hapus border-radius */
-        flex-direction: column; /* Ubah tata letak menjadi vertikal */
+        height: 100vh;
+        border-radius: 0;
+        flex-direction: column;
     }
 
     .sidebar {
@@ -401,80 +409,80 @@ body {
     }
 
     .main-content {
-        padding: 15px; /* Kurangi padding */
-        height: 100%; /* Ambil sisa tinggi yang tersedia */
+        padding: 15px;
+        height: 100%;
     }
 
     .header {
         margin-bottom: 20px;
-        flex-wrap: wrap; /* Izinkan item header untuk wrap jika tidak cukup ruang */
-        justify-content: center; /* Pusatkan item header */
-        gap: 10px; /* Jarak antar item */
-        position: static; /* Hapus sticky header untuk mobile */
-        background: none; /* Hapus background gradien pada header sticky */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        position: static;
+        background: none;
         padding-top: 0;
         padding-bottom: 0;
     }
 
     .header .nav-buttons {
-        order: 2; /* Pindahkan tombol navigasi ke bawah di mobile */
-        width: 100%; /* Ambil lebar penuh */
+        order: 2;
+        width: 100%;
         display: flex;
         justify-content: center;
         margin-top: 10px;
     }
 
     .header .user-profile {
-        order: 1; /* Pindahkan profil pengguna ke atas di mobile */
-        margin: 0 auto; /* Pusatkan profil pengguna */
+        order: 1;
+        margin: 0 auto;
     }
 
     .playlist-details {
-        flex-direction: column; /* Susun cover dan info secara vertikal */
-        align-items: center; /* Pusatkan secara horizontal */
-        text-align: center; /* Pusatkan teks */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
         margin-bottom: 30px;
     }
 
     .playlist-details .playlist-cover {
         margin-right: 0;
-        margin-bottom: 20px; /* Beri jarak antara cover dan info */
+        margin-bottom: 20px;
     }
 
     .playlist-details .playlist-cover img {
-        width: 150px; /* Perkecil ukuran cover */
+        width: 150px;
         height: 150px;
     }
 
     .playlist-details .playlist-info h1 {
-        font-size: 36px; /* Perkecil ukuran judul */
+        font-size: 36px;
     }
 
     .playlist-details .actions {
-        flex-direction: column; /* Susun tombol aksi secara vertikal */
-        gap: 15px; /* Jarak antar tombol */
+        flex-direction: column;
+        gap: 15px;
         margin-top: 20px;
     }
 
     .playlist-details .actions .play-button {
-        width: 100%; /* Ambil lebar penuh */
-        justify-content: center; /* Pusatkan teks "Putar" */
+        width: 100%;
+        justify-content: center;
     }
 
     .playlist-details .actions .like-button,
     .playlist-details .actions .more-button {
-        margin-left: 0; /* Hapus margin kiri */
-        font-size: 24px; /* Perkecil ukuran ikon */
+        margin-left: 0;
+        font-size: 24px;
     }
     
     .playlist-details .actions .like-button {
-        margin-right: 15px; /* Beri jarak antara tombol like dan more */
+        margin-right: 15px;
     }
 
     /* Song List */
     .song-list .song-header {
-        /* Sembunyikan beberapa kolom yang tidak penting di mobile */
-        grid-template-columns: 0.5fr 5fr 1fr; /* Hanya nomor, judul, dan durasi */
+        /* Hanya nomor, judul, dan durasi yang terlihat di mobile */
+        grid-template-columns: 0.5fr 5fr 1fr;
         padding-left: 0;
         padding-right: 0;
     }
@@ -485,7 +493,7 @@ body {
     }
 
     .song-list .song-item {
-        grid-template-columns: 0.5fr 5fr 1fr; /* Sesuaikan dengan header */
+        grid-template-columns: 0.5fr 5fr 1fr;
         padding-left: 0;
         padding-right: 0;
     }
@@ -496,8 +504,26 @@ body {
     }
 
     .song-list .song-item .song-column {
-        padding-left: 5px; /* Kurangi padding horizontal */
+        padding-left: 5px;
         padding-right: 5px;
+    }
+
+    .song-list .song-item .song-column.title {
+        display: flex;
+        align-items: center;
+        padding-left: 10px; /* Jaga padding kiri agar gambar tidak terlalu mepet */
+    }
+
+    .song-list .song-item .song-column .song-mini-cover {
+        width: 35px; /* Sedikit perkecil ukuran di mobile */
+        height: 35px;
+        margin-right: 8px; /* Sesuaikan margin */
+    }
+
+    .song-list .song-item .song-column:nth-child(1) {
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .song-list .song-item .song-column.duration {
@@ -506,7 +532,6 @@ body {
     }
 }
 
-/* Media Query untuk layar sangat kecil (misal: iPhone SE lama) */
 @media (max-width: 480px) {
     .playlist-details .playlist-info h1 {
         font-size: 30px;
